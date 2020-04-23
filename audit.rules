@@ -378,7 +378,7 @@
 
 ### Flask
 
-### SQL ???
+-w /usr/bin/flask -k flask
 
 # Scripting Languages
 
