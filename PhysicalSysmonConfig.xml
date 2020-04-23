@@ -4,9 +4,9 @@
   Source project:	https://github.com/SwiftOnSecurity/sysmon-config
   Source license:	Creative Commons Attribution 4.0 | You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
 
-  Fork version:	<N/A>
-  Fork author:	<N/A>
-  Fork project:	<N/A>
+  Fork version:	1.0
+  Fork author:	IRSec Blue Team 6 (Physical Security)
+  Fork project:	Blue Team 6 Sysmon Configuration
   Fork license:	<N/A>
 
   REQUIRED: Sysmon version 10.0.4.1 or higher (due to changes in syntax and bug-fixes)
