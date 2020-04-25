@@ -1,0 +1,16 @@
+#ASSUMING: you are logged in as *USER* with admin privs, list file location is /home/*USER*
+
+#command is:			sudo chpasswd < userlist.txt
+
+#run this after then ctrl+c:	sudo dd if=/dev/zero of=/home/*USER*/userlist.txt
+
+
+#USER:PASSWORD
+captain:ohC4p1tao
+firstmate:fuckAC4s3
+powdermonkey:vstfkcnzoo!
+boatswain:t1me4ocean
+quartermaster:y3sthisP4ss
+cook:S3afood1sBad
+surgeon:anoth3rR4NDpass
+stowaway:almostThereF3llas
