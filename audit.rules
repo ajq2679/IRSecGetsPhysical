@@ -122,10 +122,10 @@
 -a always,exit -F arch=b32 -S swapon -S swapoff -F auid!=-1 -k swap
 
 ## Time
--a exit,always -F arch=b32 -S adjtimex -S settimeofday -S clock_settime -k time
--a exit,always -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k time
+#-a exit,always -F arch=b32 -S adjtimex -S settimeofday -S clock_settime -k time
+#-a exit,always -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k time
 ### Local time zone
--w /etc/localtime -p wa -k localtime
+#-w /etc/localtime -p wa -k localtime
 
 ## Stunnel
 -w /usr/sbin/stunnel -p x -k stunnel
@@ -172,22 +172,22 @@
 
 ## Network Environment
 ### Changes to hostname
--a always,exit -F arch=b32 -S sethostname -S setdomainname -k network_modifications
--a always,exit -F arch=b64 -S sethostname -S setdomainname -k network_modifications
+#-a always,exit -F arch=b32 -S sethostname -S setdomainname -k network_modifications
+#-a always,exit -F arch=b64 -S sethostname -S setdomainname -k network_modifications
 ## Successful IPv4 Connections 
--a always,exit -F arch=b64 -S connect -F a2=16 -F success=1 -F key=network_connect_4
--a always,exit -F arch=b32 -S connect -F a2=16 -F success=1 -F key=network_connect_4
+#-a always,exit -F arch=b64 -S connect -F a2=16 -F success=1 -F key=network_connect_4
+#-a always,exit -F arch=b32 -S connect -F a2=16 -F success=1 -F key=network_connect_4
 ## Successful IPv6 Connections
--a always,exit -F arch=b64 -S connect -F a2=28 -F success=1 -F key=network_connect_6
--a always,exit -F arch=b32 -S connect -F a2=28 -F success=1 -F key=network_connect_6
+#-a always,exit -F arch=b64 -S connect -F a2=28 -F success=1 -F key=network_connect_6
+#-a always,exit -F arch=b32 -S connect -F a2=28 -F success=1 -F key=network_connect_6
 ### Changes to other files
--w /etc/hosts -p wa -k network_modifications
--w /etc/sysconfig/network -p wa -k network_modifications
--w /etc/network/ -p wa -k network
--a always,exit -F dir=/etc/NetworkManager/ -F perm=wa -k network_modifications
+#-w /etc/hosts -p wa -k network_modifications
+#-w /etc/sysconfig/network -p wa -k network_modifications
+#-w /etc/network/ -p wa -k network
+#-a always,exit -F dir=/etc/NetworkManager/ -F perm=wa -k network_modifications
 ### Changes to issue
--w /etc/issue -p wa -k etcissue
--w /etc/issue.net -p wa -k etcissue
+#-w /etc/issue -p wa -k etcissue
+#-w /etc/issue.net -p wa -k etcissue
 
 ## System startup scripts
 -w /etc/inittab -p wa -k init
@@ -208,8 +208,8 @@
 -w /etc/security/namespace.init -p wa -k pam
 
 ## Postfix configuration
--w /etc/aliases -p wa -k mail
--w /etc/postfix/ -p wa -k mail
+#-w /etc/aliases -p wa -k mail
+#-w /etc/postfix/ -p wa -k mail
 
 ## SSH configuration
 -w /etc/ssh/sshd_config -k sshd
@@ -237,15 +237,15 @@
 -w /etc/sudoers -p rw -k priv_esc
 
 ## Power state
--w /sbin/shutdown -p x -k power
--w /sbin/poweroff -p x -k power
--w /sbin/reboot -p x -k power
--w /sbin/halt -p x -k power
+#-w /sbin/shutdown -p x -k power
+#-w /sbin/poweroff -p x -k power
+#-w /sbin/reboot -p x -k power
+#-w /sbin/halt -p x -k power
 
 ## Session initiation information
--w /var/run/utmp -p wa -k session
--w /var/log/btmp -p wa -k session
--w /var/log/wtmp -p wa -k session
+#-w /var/run/utmp -p wa -k session
+#-w /var/log/btmp -p wa -k session
+#-w /var/log/wtmp -p wa -k session
 
 ## Discretionary Access Control (DAC) modifications
 -a always,exit -F arch=b32 -S chmod -F auid>=500 -F auid!=4294967295 -k perm_mod
@@ -340,12 +340,6 @@
 -w /usr/bin/rpm -p x -k software_mgmt
 -w /usr/bin/yum -p x -k software_mgmt
 
-# YAST/Zypper/RPM (SuSE)
--w /sbin/yast -p x -k yast
--w /sbin/yast2 -p x -k yast
--w /bin/rpm -p x -k software_mgmt
--w /usr/bin/zypper -k software_mgmt
-
 # DPKG / APT-GET (Debian/Ubuntu)
 -w /usr/bin/dpkg -p x -k software_mgmt
 -w /usr/bin/apt-add-repository -p x -k software_mgmt
@@ -392,12 +386,12 @@
 ## Remove them if the cause to much volumen in your einvironment
 
 ## Root command executions 
--a exit,always -F arch=b64 -F euid=0 -S execve -k rootcmd
--a exit,always -F arch=b32 -F euid=0 -S execve -k rootcmd
+#-a exit,always -F arch=b64 -F euid=0 -S execve -k rootcmd
+#-a exit,always -F arch=b32 -F euid=0 -S execve -k rootcmd
 
 ## File Deletion Events by User
--a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+#-a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+#-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 
 ## File Access
 ### Unauthorized Access (unsuccessful)
